@@ -17,7 +17,7 @@ public class Question11 {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		final String regex = "((BMI)|([Bb]o[ds]y mass index))[ \\-\\>\\<(A-Z)(a-z):=]*(?<BMI1>(\\d\\d\\.\\d)|(\\d\\d))?[ \\-\\>\\<(A-Z)(a-z):=]*(?<BMI2>(\\d\\d\\.\\d)|(\\d\\d))(?!\\%)";
+		final String regex = "((BMI)|([Bb]ody mass index))[ \\-\\>\\<(A-Z)(a-z):=]*(?<BMI1>(\\d\\d\\.\\d)|(\\d\\d))?[ \\-\\>\\<(A-Z)(a-z):=]*(?<BMI2>(\\d\\d\\.\\d)|(\\d\\d))(?!\\%)";
 		String s;
 		try {
 			while ((s = br.readLine()) != null) {

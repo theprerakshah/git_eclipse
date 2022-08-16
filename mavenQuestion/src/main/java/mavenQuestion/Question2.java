@@ -23,7 +23,7 @@ public class Question2 {
 		try {
 			while ((s = br.readLine()) != null) {
 
-				String regex = "\\b^([T][h][e])\\b";
+				String regex = "^([T][h][e])\\b";
 
 				Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
 				Matcher matcher = pattern.matcher(s);
