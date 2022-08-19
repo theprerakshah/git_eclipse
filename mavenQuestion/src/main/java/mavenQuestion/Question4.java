@@ -1,45 +1,152 @@
 package mavenQuestion;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
-public class Question4 {
-	public static void main(String[] args) {
-		BufferedReader br = null;
-		BufferedReader br1= null;
-		try {
-			br = new BufferedReader(new FileReader("/home/yagneshpancholi/Downloads/Problem_Input/4/2.csv"));
-			br1 = new BufferedReader(new FileReader("/home/yagneshpancholi/Downloads/Problem_Input/4/1.tsv"));
-		} catch (FileNotFoundException e) {
+public class Question4
+{
+	public static void main(String[] args)
+	{
+		File[] files = new File("/home/yagneshpancholi/Downloads/Problem_Input/4").listFiles();
+
+		for(File f : files)
+		{
+			if(f.getName().endsWith(".csv"))
+			{
+				sumOfCSV(f);
+			}
+			else if(f.getName().endsWith(".tsv"))
+			{
+				sumOfTSV(f);
+			}
+			else
+			{
+				sumOfTXT(f);
+			}
+		}
+
+	}
+
+	private static void sumOfTSV(File f)
+	{
+		int sum = 0;
+		try
+		{
+			BufferedReader br = new BufferedReader(new FileReader(f));
+			String s;
+			try
+			{
+				br.readLine();
+			}
+			catch(IOException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try
+			{
+				while((s = br.readLine()) != null)
+				{
+					String[] s3 = s.split("\t");
+					sum = sum + Integer.parseInt(s3[4]);
+				}
+			}
+			catch(NumberFormatException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			catch(IOException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+		catch(FileNotFoundException e)
+		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String s,s2;
-		int sum = 0,sum1= 0;
-		try {
-			br.readLine();
-			while ((s = br.readLine()) != null) {
-				String[] s1 = s.split(",");
-				sum = sum + Integer.parseInt(s1[6]);
+		System.out.print("Sum For TSV = ");
+		System.out.println(sum);
+	}
+
+	private static void sumOfTXT(File f)
+	{
+		Double sum = 0.0;
+		try
+		{
+			BufferedReader br = new BufferedReader(new FileReader(f));
+
+			String s;
+			try
+			{
+				br.readLine();
+				while((s = br.readLine()) != null)
+				{
+					String[] s3 = s.split("\t");
+					sum = sum + Double.parseDouble((s3[2]));
+				}
 			}
-			br1.readLine();
-			while ((s2 = br1.readLine()) != null) {
-				String[] s3 = s2.split("	");
-				sum1= sum1+ Integer.parseInt(s3[4]);
+			catch(NumberFormatException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-			br.close();
-			br1.close();
-		} catch (IOException e) {
+			catch(IOException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+		catch(FileNotFoundException e)
+		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		System.out.println( "CSV File = " + sum);
-		System.out.println( "TSV File = "+sum1);
+		System.out.print("Sum For TXT = ");
+		System.out.println(sum);
+	}
+
+	private static void sumOfCSV(File f)
+	{
+		int sum = 0;
+		try
+		{
+			BufferedReader br = new BufferedReader(new FileReader(f));
+			String s;
+			try
+			{
+				br.readLine();
+				while((s = br.readLine()) != null)
+				{
+					String[] s1 = s.split(",");
+					sum = sum + Integer.parseInt(s1[6]);
+				}
+			}
+			catch(NumberFormatException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			catch(IOException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		catch(FileNotFoundException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.print("Sum For CSV = ");
+		System.out.println(sum);
 	}
 
 }
