@@ -33,7 +33,7 @@ public class Question7
 				String regex = "\\~ (?<val>[A-Za-z0-9\\, ]*)";
 				String test = mylist.get(i);
 
-				Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
+				Pattern pattern = Pattern.compile(regex);
 				Matcher matcher = pattern.matcher(test);
 
 				if(matcher.find())
