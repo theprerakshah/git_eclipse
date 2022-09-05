@@ -11,14 +11,18 @@ public class Question8
 	{
 		ArrayList<String> myList = new ArrayList<String>();
 		ArrayList<String> tempList = new ArrayList<String>();
+		ArrayList<String> ansList = new ArrayList<String>();
+		ArrayList<String> ans2List = new ArrayList<String>();
+
 		String[] str = null;
 		try
 		{
-			BufferedReader br = new BufferedReader(new FileReader("/home/yagneshpancholi/Downloads/Problem_Input/8/1.txt"));
+			BufferedReader br = new BufferedReader(new FileReader("/home/yagneshpancholi/Downloads/Problem_Input/8/InputFile"));
 			String s;
+
 			while((s = br.readLine()) != null)
 			{
-
+				boolean myBoolean2 = false;
 				String[] temp = s.split("\t", 2);
 				String code = temp[0];
 				str = temp[1].split("\t");
@@ -26,58 +30,77 @@ public class Question8
 				{
 					myList.add(i);
 				}
+
 				int tabCount = 0;
-				tempList.addAll(myList);
-				//				if(tempList.size() != 0)
-				//				{
-				//					int tempi = 0;
-				//					if(myList.size() > tempList.size())
-				//					{
-				//
-				//						tempi = tempList.size();
-				//					}
-				//					else
-				//					{
-				//						tempi = myList.size();
-				//					}
-				//					for(int i = 0; i < tempi; i++)
-				//					{
-				//
-				//						if(myList.get(i).equals(tempList.get(i)))
-				//						{
-				//							System.out.println();
-				//							myList.remove(i);
-				//							//							continue;
-				//
-				//						}
-				//						else
-				//						{
-				//
-				//						}
-				//
-				//					}
-				//					tempList.addAll(myList);
-				//				}
-				//				else
-				//				{
-				//					tempList.addAll(myList);
-				//
-				//				}
+				if(tempList.size() == 0)
+				{
+					for(int m = 0; m < 6; m++)
+					{
+						tempList.add("A");
+					}
+					ansList.addAll(myList);
+				}
+				else
+				{
+					ansList.clear();
+					ansList.addAll(ans2List);
+					tempList.clear();
+					tempList.addAll(ansList);
+					tempList.add("");
+					tempList.add("");
+				}
+				ans2List.clear();
+				ans2List.addAll(myList);
+				boolean myBoolean = false;
 				for(int i = 0; i < myList.size(); i++)
 				{
-					for(int j = 0; j < tabCount; j++)
+					if(!myList.get(i).equals(tempList.get(i)))
 					{
-						System.out.print("\t");
-					}
-					tabCount++;
+						for(int j = 0; j < tabCount; j++)
+						{
+							System.out.print("\t");
 
-					System.out.print(tempList.get(i));
+						}
+					}
+
+					tabCount++;
+					try
+					{
+						if(myBoolean2)
+						{
+							//							for(int j = 1; j < tabCount - 1; j++)
+							//							{
+							//								System.out.print("\t");
+							//
+							//							}
+							System.out.print(myList.get(i));
+						}
+						else
+						{
+							if(!myList.get(i).equals(tempList.get(i)))
+							{
+								System.out.print(myList.get(i));
+								myBoolean = true;
+								myBoolean2 = true;
+
+							}
+						}
+
+					}
+					catch(Exception e)
+					{
+						System.out.println(e);
+					}
 					if(myList.size() - 1 == i)
 					{
 						System.out.print("~ " + code);
 
 					}
-					System.out.println();
+					if(myBoolean)
+					{
+						System.out.println();
+
+					}
 				}
 				myList.clear();
 

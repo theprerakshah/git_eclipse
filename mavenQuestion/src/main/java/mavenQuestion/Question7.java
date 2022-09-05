@@ -96,7 +96,7 @@ public class Question7
 	{
 		// TODO Auto-generated method stub
 		String regex = "\\t";
-		Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
+		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(s1);
 		int c = 0;
 		while(matcher.find())
