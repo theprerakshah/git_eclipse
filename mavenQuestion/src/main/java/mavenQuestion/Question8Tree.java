@@ -30,7 +30,7 @@ class Tree1
 
 		if(!codes.isEmpty())
 		{
-			String s = tab + name + "~" + codes;
+			String s = tab + name + " ~" + codes;
 			//System.out.println(s.replace("[", "").replace("]", ""));
 			String s1 = s.replace("[", " ").replace("]", " ");
 			bw.append(s1 + "\n");
@@ -39,8 +39,8 @@ class Tree1
 		{
 			String s = tab + name;
 			//System.out.println(s.replace("[", "").replace("]", ""));
-			String s1 = s.replace("[", " ").replace("]", " ");
-			bw.append(s1 + "\n");
+			//String s1 = s.replace("[", " ").replace("]", " ");
+			bw.append(s + "\n");
 
 		}
 
