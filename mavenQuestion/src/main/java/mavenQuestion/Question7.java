@@ -19,14 +19,15 @@ public class Question7
 		BufferedReader br = null;
 		try
 		{
-			br = new BufferedReader(new FileReader("/home/yagneshpancholi/Downloads/Problem_Input/7/InputFile"));
+			//			br = new BufferedReader(new FileReader("/home/yagneshpancholi/Downloads/Problem_Input/7/InputFile"));
+			br = new BufferedReader(new FileReader("/home/yagneshpancholi/Desktop/Question8Output.txt"));
 
 			String s;
 
 			while((s = br.readLine()) != null)
 			{
-				String s1 = s.split("@@")[0];
-				mylist.add(s1);
+				//				String s1 = s.split("@@")[0];
+				mylist.add(s);
 			}
 			for(int i = 0; i < mylist.size(); i++)
 			{
@@ -48,13 +49,17 @@ public class Question7
 					//System.out.println(test.split("\\~ (?<val>[A-Za-z0-9]*)")[0]);
 					try
 					{
-						int n = countTabs(mylist.get(i + 1));
-						int n1 = countTabs(mylist.get(i));
-						for(int j = templist.size(); j > n; j--)
+						if(i + 1 != mylist.size())
 						{
-							templist.remove(j - 1);
+							int n = countTabs(mylist.get(i + 1));
+							//						int n1 = countTabs(mylist.get(i));
+							for(int j = templist.size(); j > n; j--)
+							{
+								templist.remove(j - 1);
+							}
+							System.out.println();
 						}
-						System.out.println();
+
 					}
 					catch(Exception e)
 					{
